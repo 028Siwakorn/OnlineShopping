@@ -1,32 +1,36 @@
-import { Product } from "./Product";
-export class LineItem {
-    private quantity: number;
-    private price: number;
-    private product: Product;
-    constructor(quantity: number, price: number, product: Product) {
-        this.quantity = quantity;
-        this.price = price;
-        this.product = product;
+import { Product } from "./Product"
+
+class LineItem {
+    private product: Product
+    private quantity: number
+    private price: number
+
+    constructor(product: Product, quantity: number, price: number) {
+        this.product = product
+        this.quantity = quantity
+        this.price = price
     }
+
     public getQuantity(): number {
-        return this.quantity;
+        return this.quantity
     }
+
     public setQuantity(quantity: number): void {
-        this.quantity = quantity;
+        this.quantity = quantity
     }
+
     public getPrice(): number {
-        return this.price;
+        return this.price
     }
+
     public setPrice(price: number): void {
         this.price = price
     }
-    public getProduct(): Product {
-        return this.product
-    }
-    public setProduct(product: Product): void {
-        this.product = this.product
-    }
+
+
     public toString(): string {
-        return `LineItems : [Quantity = ${this.quantity}, Price = ${this.price}, Product = ${this.product.toString()}}]`
+        return `LineItem | [Quantity = ${this.quantity}], [Price = ${this.price}], [Product = ${this.product.toString()}]`
     }
 }
+
+export { LineItem }

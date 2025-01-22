@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LineItem = void 0;
 class LineItem {
-    constructor(quantity, price, product) {
+    constructor(product, quantity, price) {
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
-        this.product = product;
     }
     getQuantity() {
         return this.quantity;
@@ -19,14 +19,8 @@ class LineItem {
     setPrice(price) {
         this.price = price;
     }
-    getProduct() {
-        return this.product;
-    }
-    setProduct(product) {
-        this.product = this.product;
-    }
     toString() {
-        return `LineItems : [Quantity = ${this.quantity}, Price = ${this.price}, Product = ${this.product.toString()}}]`;
+        return `LineItem | [Quantity = ${this.quantity}], [Price = ${this.price}], [Product = ${this.product.toString()}]`;
     }
 }
 exports.LineItem = LineItem;

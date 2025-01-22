@@ -17,5 +17,5 @@ const product1 = new Product("P001", "Lays", "Lays Co.th");
 console.log(product1.toString());
 
 console.log("############## LINEITEM ############");
-const lineitem1 = new LineItem(50, 100, product1);
+const lineitem1 = new LineItem(product1, 100, 50);
 console.log(lineitem1.toString());

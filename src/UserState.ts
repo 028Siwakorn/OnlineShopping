@@ -4,4 +4,3 @@ export class UserState {
     public static BLOCKED = "Blocked"
     public static BANNED = "Banned"
 }
-   

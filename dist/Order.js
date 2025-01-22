@@ -3,14 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Order = void 0;
 const OrderStatus_1 = require("./OrderStatus");
 class Order {
-    constructor(number, ordered, shipped, ship_to) {
-        this.total = 0;
+    constructor(lineItems, number, ordered, shipped, ship_to) {
         this.lineItems = [];
+        this.total = 0;
+        this.lineItems = lineItems;
         this.number = number;
         this.ordered = ordered;
         this.shipped = shipped;
         this.ship_to = ship_to;
-        this.status = OrderStatus_1.OrderStatus;
+        this.status = OrderStatus_1.OrderStatus.NEW;
     }
     getNumber() {
         return this.number;
@@ -18,20 +19,17 @@ class Order {
     getOrderedDate() {
         return this.ordered;
     }
-    setOrderedDate(ordered) {
-        this.ordered = ordered;
-    }
     getShippedDate() {
         return this.shipped;
     }
     setShippedDate(shipped) {
         this.shipped = shipped;
     }
-    getShipToAddress() {
+    getShip_toAddress() {
         return this.ship_to;
     }
-    setShipToAddress(ship_to) {
-        this.ship_to = ship_to;
+    setShip_toAddress(ship) {
+        this.ship_to = ship;
     }
     getStatus() {
         return this.status;
@@ -45,15 +43,15 @@ class Order {
     setTotal(total) {
         this.total = total;
     }
-    calculateTotal() {
-        let totalPrice = 0;
+    calTotal() {
+        let total = 0;
         for (let i = 0; i < this.lineItems.length; i++) {
-            totalPrice += this.lineItems[i].getPrice() * this.lineItems[i].getQuantity();
+            total += this.lineItems[i].getQuantity() * this.lineItems[i].getPrice();
         }
-        return totalPrice;
+        return total;
     }
     toString() {
-        return `Order [Number = ${this.number}, Ordered = ${this.ordered}, Shipped = ${this.shipped}, ShipToAddress = ${this.ship_to}, Status = ${this.status}, Total = ${this.total}]`;
+        return `Order | [number = ${this.number}, ordered = ${this.ordered}, shipped = ${this.shipped}, ship_to = ${this.ship_to}, status = ${this.status}, total = ${this.total}]`;
     }
 }
 exports.Order = Order;
