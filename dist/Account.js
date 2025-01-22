@@ -1,29 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Account = void 0;
-const Customer_1 = require("./Customer");
-class Account extends Customer_1.Customer {
-    constructor(webUser, id, address, phone, email, accountId, billing_address, is_closed, open, closed) {
-        super(webUser, id, address, phone, email);
-        this.accountId = accountId;
+const ShoppingCart_1 = require("./ShoppingCart");
+class Account {
+    constructor(id, billing_address, is_closed, open, closed) {
+        this.orders = [];
+        this.payments = [];
+        this.shoppingCarts = new ShoppingCart_1.ShoppingCart("Yo");
+        this.id = id;
         this.billing_address = billing_address;
         this.is_closed = is_closed;
         this.open = open;
         this.closed = closed;
     }
     getId() {
-        return this.accountId;
+        return this.id;
     }
-    getBilling_address() {
+    getBillingAddress() {
         return this.billing_address;
     }
-    setBilling_address(billing_address) {
+    setBillingAddress(billing_address) {
         this.billing_address = billing_address;
     }
-    getIs_closed() {
+    getIsClosed() {
         return this.is_closed;
     }
-    setIs_closed(is_closed) {
+    setIsClosed(is_closed) {
         this.is_closed = is_closed;
     }
     getOpen() {
@@ -38,8 +40,23 @@ class Account extends Customer_1.Customer {
     setClosed(closed) {
         this.closed = closed;
     }
+    addPayment(payments) {
+        this.payments.push(payments);
+    }
+    getPayments() {
+        return this.payments;
+    }
+    addOrder(orders) {
+        this.orders.push(orders);
+    }
+    getOrders() {
+        return this.orders;
+    }
+    getShoppingCarts() {
+        return this.shoppingCarts;
+    }
     toString() {
-        return `Account | [id: ${this.accountId}, billing_address: ${this.billing_address}, is_closed: ${this.is_closed}, open: ${this.open}, closed: ${this.closed}, [Customer ${super.toString()}]]`;
+        return `ID = ${this.id}, BillingAddress = ${this.billing_address}, IsClosed = ${this.is_closed}, Open = ${this.open}, Closed = ${this.closed}`;
     }
 }
 exports.Account = Account;

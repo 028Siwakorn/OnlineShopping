@@ -1,4 +1,4 @@
-class Payment {
+export class Payment {
     private id: string
     private paid: string
     private total: number

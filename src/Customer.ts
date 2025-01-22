@@ -1,12 +1,15 @@
+import { Account } from './Account';
 import { WebUser } from './WebUser';
 class Customer {
+    private account: Account
     private webuser: WebUser
     private id: string
     private address: string
     private phone: string
     private email: string
 
-    constructor(webuser: WebUser, id: string, address: string, phone: string, email: string) {
+    constructor(account: Account, webuser: WebUser, id: string, address: string, phone: string, email: string) {
+        this.account = account
         this.webuser = webuser
         this.id = id
         this.address = address
@@ -29,8 +32,7 @@ class Customer {
         this.phone
     }
     public toString(): string {
-        return `Customer ID: ${this.id}, Address: ${this.address}, Phone: ${this.phone}, Email: ${this.email}, ${this.webuser}`;
+        return `Customer ID: ${this.id}, Address: ${this.address}, Phone: ${this.phone}, Email: ${this.email}, ${this.webuser}, Account: ${this.account.toString()}`;
     }
-
 }
 export { Customer }
